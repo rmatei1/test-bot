@@ -14,7 +14,7 @@ jobs:
           node-version: 12
       - run: npm install
       - run: npm install -g surge
-      - run: npm run yarn nx affected --target=deploy --base=HEAD~1
+      - run: npm run nx affected --target=deploy --base=HEAD~1
         env:
           SURGE_DOMAIN: ${{ secrets.SURGE_DOMAIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
