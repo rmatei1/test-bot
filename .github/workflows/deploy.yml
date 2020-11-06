@@ -1,0 +1,19 @@
+name: Deploy Website
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Deploying to surge
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install surge and start deployment
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm install -g surge
+      - run: npm run nx affected:deploy
+        env:
+          SURGE_DOMAIN: ${{ secrets.SURGE_DOMAIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}

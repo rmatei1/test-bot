@@ -25,7 +25,9 @@
               "apps/bg-hoard/src/favicon.ico",
               "apps/bg-hoard/src/assets"
             ],
-            "styles": ["apps/bg-hoard/src/styles.scss"],
+            "styles": [
+              "apps/bg-hoard/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -79,7 +81,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/bg-hoard/src/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/bg-hoard/src/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -87,6 +91,18 @@
           "options": {
             "jestConfig": "apps/bg-hoard/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "commands": [
+              "npm run nx build bg-hoard",
+              "surge ./ ${SURGE_DOMAIN} --token ${SURGE_TOKEN}"
+            ],
+            "cwd": "dist/apps/bg-hoard",
+            "parallel": false
           }
         }
       }
@@ -112,7 +128,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/bg-hoard-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/bg-hoard-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }

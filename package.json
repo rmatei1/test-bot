@@ -39,6 +39,7 @@
     "@angular/router": "^10.1.0",
     "@nrwl/angular": "10.3.2",
     "rxjs": "~6.5.5",
+    "surge": "^0.21.6",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
