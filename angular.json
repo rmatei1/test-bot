@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "projects": {
+    "bg-hoard": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/bg-hoard",
+      "sourceRoot": "apps/bg-hoard/src",
+      "prefix": "nx-workshop-day2",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/bg-hoard",
+            "index": "apps/bg-hoard/src/index.html",
+            "main": "apps/bg-hoard/src/main.ts",
+            "polyfills": "apps/bg-hoard/src/polyfills.ts",
+            "tsConfig": "apps/bg-hoard/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/bg-hoard/src/favicon.ico",
+              "apps/bg-hoard/src/assets"
+            ],
+            "styles": ["apps/bg-hoard/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/bg-hoard/src/environments/environment.ts",
+                  "with": "apps/bg-hoard/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bg-hoard:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bg-hoard:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bg-hoard:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/bg-hoard/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/bg-hoard/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "bg-hoard-e2e": {
+      "root": "apps/bg-hoard-e2e",
+      "sourceRoot": "apps/bg-hoard-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/bg-hoard-e2e/cypress.json",
+            "tsConfig": "apps/bg-hoard-e2e/tsconfig.e2e.json",
+            "devServerTarget": "bg-hoard:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bg-hoard:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/bg-hoard-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "bg-hoard"
+}
