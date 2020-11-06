@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "ngrx-lib",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of Ngrx Feature (example: 'users')",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "directory": {
+      "type": "string",
+      "description": "An existing directory where the ngrx state would be placed.",
+      "enum": [
+        "shared",
+        "core",
+        "bg-hoard"
+      ]
+    }
+  },
+  "required": ["name", "directory"]
+}
