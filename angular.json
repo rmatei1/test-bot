@@ -98,8 +98,7 @@
           "outputs": [],
           "options": {
             "commands": [
-              "npm run nx build bg-hoard",
-              "surge ./ ${SURGE_DOMAIN} --token ${SURGE_TOKEN}"
+              "npm run nx build bg-hoard"
             ],
             "cwd": "dist/apps/bg-hoard",
             "parallel": false
