@@ -12,5 +12,6 @@ jobs:
         id: last_successful_commit
         with:
           branch: 'main'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Last successful commit hash
         run: echo "The hash is ${{ steps.last_successful_commit.commit_hash }}"
