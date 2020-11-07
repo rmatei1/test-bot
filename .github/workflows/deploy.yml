@@ -14,10 +14,6 @@ jobs:
           node-version: 12
       - run: npm install
       - run: npm install -g surge
-      - run: npm run nx build bg-hoard
-        env:
-          SURGE_DOMAIN: ${{ secrets.SURGE_DOMAIN }}
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
       - name: Get the last successful commit
         uses: rarmatei/last-successful-commit-action@v6
         id: last_successful_commit
