@@ -11,7 +11,7 @@ if (environment.production) {
 console.log("some change3!")
 
 let a = 1;
-a = 5;
+a = 6;
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
