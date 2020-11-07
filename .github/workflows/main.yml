@@ -15,4 +15,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           workflow_id: 'main.yml'
       - name: Last successful commit hash
-        run: echo "The hash is ${{ steps.last_successful_commit.commit_hash }}"
+        run: echo "The hash is ${{ steps.last_successful_commit.outputs.commit_hash }}"
