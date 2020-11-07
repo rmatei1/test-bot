@@ -15,7 +15,7 @@ jobs:
       - run: npm install
       - run: npm install -g surge
       - name: Get the last successful commit
-        uses: rarmatei/last-successful-commit-action@v6
+        uses: rarmatei/last-successful-commit-action@v7
         id: last_successful_commit
         with:
           branch: 'main'
