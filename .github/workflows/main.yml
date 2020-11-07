@@ -8,10 +8,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Get the last successful commit
-        uses: rarmatei/last-successful-commit-action@v4
+        uses: rarmatei/last-successful-commit-action@v5
         id: last_successful_commit
         with:
           branch: 'main'
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow_id: 'main.yml'
       - name: Last successful commit hash
         run: echo "The hash is ${{ steps.last_successful_commit.commit_hash }}"
