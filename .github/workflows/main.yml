@@ -8,7 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Get the last successful commit
-        uses: rarmatei/last-successful-commit-action@v5
+        uses: rarmatei/last-successful-commit-action@v6
         id: last_successful_commit
         with:
           branch: 'main'
