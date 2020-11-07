@@ -18,7 +18,14 @@ jobs:
         env:
           SURGE_DOMAIN: ${{ secrets.SURGE_DOMAIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-      - run: npm run nx affected -- --target=deploy --base=HEAD~7
+      - name: Get the last successful commit
+        uses: rarmatei/last-successful-commit-action@v6
+        id: last_successful_commit
+        with:
+          branch: 'main'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow_id: 'deploy.yml'
+      - run: npm run nx affected -- --target=deploy --base=${{ steps.last_successful_commit.outputs.commit_hash }}
         env:
           SURGE_DOMAIN: ${{ secrets.SURGE_DOMAIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}

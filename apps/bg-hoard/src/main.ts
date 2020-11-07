@@ -8,7 +8,7 @@ if (environment.production) {
   enableProdMode();
 }
 
-console.log("some change2!")
+console.log("some change3!")
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
