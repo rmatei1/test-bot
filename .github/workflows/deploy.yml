@@ -9,7 +9,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: bahmutov/npm-install@v1.4.5
-      - run: npm run nx deploy bg-hoard
+      - name: Get the last successful commit
+        uses: rarmatei/last-successful-commit-action@v8
+        id: last_successful_commit
+        with:
+          branch: 'main'
+          workflow_id: 'deploy.yml'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - run: npm run nx affected -- --target=deploy --base=${BASE_SHA}
         env:
+          BASE_SHA: ${{ steps.last_successful_commit.outputs.commit_hash }}
           SURGE_DOMAIN: ${{ secrets.SURGE_DOMAIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
