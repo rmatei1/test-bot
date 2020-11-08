@@ -8,8 +8,7 @@ jobs:
     name: Deploying affected apps
     steps:
       - uses: actions/checkout@v1
-      - name: Install surge and start deployment
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
           node-version: 12
       - run: npm install
