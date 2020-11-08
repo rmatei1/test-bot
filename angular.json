@@ -25,9 +25,7 @@
               "apps/bg-hoard/src/favicon.ico",
               "apps/bg-hoard/src/assets"
             ],
-            "styles": [
-              "apps/bg-hoard/src/styles.scss"
-            ],
+            "styles": ["apps/bg-hoard/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -64,7 +62,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bg-hoard:build"
+            "browserTarget": "bg-hoard:build",
+            "proxyConfig": "apps/bg-hoard/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -81,9 +80,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/bg-hoard/src/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/bg-hoard/src/**/*.ts"]
           }
         },
         "test": {
@@ -127,9 +124,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/bg-hoard-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/bg-hoard-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -147,9 +142,7 @@
             "outputPath": "dist/apps/server",
             "main": "apps/server/src/main.ts",
             "tsConfig": "apps/server/tsconfig.app.json",
-            "assets": [
-              "apps/server/src/assets"
-            ]
+            "assets": ["apps/server/src/assets"]
           },
           "configurations": {
             "production": {
@@ -174,9 +167,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/server/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/server/**/*.ts"]
           }
         },
         "test": {
@@ -196,7 +187,6 @@
               "heroku container:login",
               "heroku container:push web -a bg-hoard-api-test",
               "heroku container:release web -a bg-hoard-api-test"
-
             ],
             "cwd": "dist/apps/server",
             "parallel": false
@@ -206,11 +196,58 @@
           "builder": "@nrwl/workspace:run-commands",
           "outputs": [],
           "options": {
-            "commands": [
-              "nx build server",
-              "nx push-heroku-container server"
-            ],
+            "commands": ["nx build server", "nx push-heroku-container server"],
             "parallel": false
+          }
+        }
+      }
+    },
+    "api": {
+      "root": "apps/api",
+      "sourceRoot": "apps/api/src",
+      "projectType": "application",
+      "prefix": "api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/api",
+            "main": "apps/api/src/main.ts",
+            "tsConfig": "apps/api/tsconfig.app.json",
+            "assets": ["apps/api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/src/environments/environment.ts",
+                  "with": "apps/api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "api:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/api/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/api/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
