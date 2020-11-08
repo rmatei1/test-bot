@@ -1,3 +1,3 @@
 module.exports = {
-  projects: ['<rootDir>/apps/bg-hoard'],
+  projects: ['<rootDir>/apps/bg-hoard', '<rootDir>/apps/server'],
 };
