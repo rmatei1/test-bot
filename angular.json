@@ -100,7 +100,8 @@
             "commands": [
               "nx build bg-hoard",
               "surge dist/apps/bg-hoard ${SURGE_DOMAIN} --token ${SURGE_TOKEN}"
-            ]
+            ],
+            "parallel": false
           }
         }
       }
