@@ -2,7 +2,16 @@ name: Deploy Website
 
 on: [pull_request]
 
+env:
+  NX_BRANCH: ${{ github.event.number }}
+  NX_RUN_GROUP: ${{ github.run_id }}
+
 jobs:
+  log-vars:
+    - runs-on: ubuntu-latest
+    - name: log vars
+    - steps:
+      - run: echo branch:${NX_BRANCH} run-group:${NX_RUN_GROUP}
   build:
     runs-on: ubuntu-latest
     name: Building affected apps
