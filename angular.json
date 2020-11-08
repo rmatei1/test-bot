@@ -192,13 +192,13 @@
           "options": {
             "commands": [
               "nx build server",
+              "cd dist/apps/server",
               "cp ../../../apps/server/Dockerfile .",
               "heroku container:login",
               "heroku container:push web -a bg-hoard-api-test",
               "heroku container:release web -a bg-hoard-api-test"
 
             ],
-            "cwd": "dist/apps/server",
             "parallel": false
           }
         }

@@ -18,8 +18,9 @@ jobs:
           branch: 'main'
           workflow_id: 'deploy.yml'
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - run: npm run nx affected -- --target=deploy --base=${BASE_SHA}
+      - run: npm run nx affected -- --target=deploy --base=${BASE_SHA} --parallel
         env:
           BASE_SHA: ${{ steps.last_successful_commit.outputs.commit_hash }}
           SURGE_DOMAIN: ${{ secrets.SURGE_DOMAIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
