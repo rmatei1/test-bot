@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 
 app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to server2!' });
+  res.send({ message: 'Welcome to server3!' });
 });
 
 const port = process.env.PORT || 3333;
