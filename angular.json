@@ -98,9 +98,9 @@
           "outputs": [],
           "options": {
             "commands": [
-              "surge ./ ${SURGE_DOMAIN} --token ${SURGE_TOKEN}"
-            ],
-            "cwd": "dist/apps/bg-hoard"
+              "nx build bg-hoard",
+              "surge dist/apps/bg-hoard ${SURGE_DOMAIN} --token ${SURGE_TOKEN}"
+            ]
           }
         }
       }
