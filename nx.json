@@ -18,7 +18,7 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "accessToken": "YjBjNmVmZWMtYmE3My00Y2M0LWI1NTktNGRkNGJhMzM5ZjBmfHJlYWQtd3JpdGU=",
+        "accessToken": "ZTlmM2UxZDItZDM2Zi00OTcyLWEyMDUtMzdhMzk5Mzg3N2MwfHJlYWQtd3JpdGU=",
         "cacheableOperations": [
           "build",
           "test",
@@ -27,7 +27,7 @@
         ],
         "canTrackAnalytics": false,
         "showUsageWarnings": true,
-        "url": "https://api.staging.nrwl.io"
+        "url": "https://16abe1a1939d.ngrok.io"
       }
     }
   },
