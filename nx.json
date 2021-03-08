@@ -18,7 +18,7 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "accessToken": "MjdkYWYzNDYtOGMwMC00ZTdkLTgwYzctZWQyOTE5ZGY3ODZhfHJlYWQtd3JpdGU=",
+        "accessToken": "N2VlNDA5ZmUtNGNmZi00NDVkLThmNzUtN2MxYzM0NGYwYjA2fHJlYWQtd3JpdGU=",
         "cacheableOperations": [
           "build",
           "test",
@@ -27,7 +27,7 @@
         ],
         "canTrackAnalytics": false,
         "showUsageWarnings": true,
-        "url": "https://f056883099ef.ngrok.io"
+        "url": "https://f8e393bf7c39.ngrok.io"
       }
     }
   },
